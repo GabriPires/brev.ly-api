@@ -1,4 +1,4 @@
-import { getLinks } from '@/app/functions/get-linkts'
+import { getLinks } from '@/app/functions/get-links'
 import { unwrapEither } from '@/shared/either'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
