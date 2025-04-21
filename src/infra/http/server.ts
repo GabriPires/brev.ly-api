@@ -6,6 +6,7 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from 'fastify-type-provider-zod'
+import { createLinkRoute } from './routes/create-link'
 
 const server = fastify()
 
@@ -30,6 +31,8 @@ server.setErrorHandler((error, request, reply) => {
 })
 
 server.register(fastifyCors, { origin: '*' })
+
+server.register(createLinkRoute)
 
 server.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server running')
