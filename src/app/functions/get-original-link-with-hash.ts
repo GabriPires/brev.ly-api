@@ -1,7 +1,7 @@
 import { db } from '@/infra/db'
 import { schema } from '@/infra/db/schemas'
 import { type Either, makeLeft, makeRight } from '@/shared/either'
-import { eq } from 'drizzle-orm'
+import { eq, sql } from 'drizzle-orm'
 import { z } from 'zod'
 import { NotFound } from './errors/not-found'
 
@@ -34,6 +34,13 @@ export async function getOriginalLinkWithHash(
   if (result.length === 0) {
     return makeLeft(new NotFound())
   }
+
+  await db
+    .update(schema.link)
+    .set({
+      accessCount: sql`${schema.link.accessCount} + 1`,
+    })
+    .where(eq(schema.link.shortHash, hash))
 
   const [{ originalUrl }] = result
 
