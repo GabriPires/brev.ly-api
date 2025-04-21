@@ -7,6 +7,7 @@ interface GetLinksOutput {
     id: string
     originalUrl: string
     shortHash: string
+    accessCount: number
   }[]
 }
 
@@ -16,6 +17,7 @@ export async function getLinks(): Promise<Either<null, GetLinksOutput>> {
       id: schema.link.id,
       originalUrl: schema.link.originalUrl,
       shortHash: schema.link.shortHash,
+      accessCount: schema.link.accessCount,
     })
     .from(schema.link)
 

@@ -7,6 +7,7 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod'
 import { createLinkRoute } from './routes/create-link'
+import { deleteLinkRoute } from './routes/delete-link'
 import { getLinksRoute } from './routes/get-links'
 import { getOriginalLinkWithHashRoute } from './routes/get-original-link-with-hash'
 
@@ -37,6 +38,7 @@ server.register(fastifyCors, { origin: '*' })
 server.register(createLinkRoute)
 server.register(getLinksRoute)
 server.register(getOriginalLinkWithHashRoute)
+server.register(deleteLinkRoute)
 
 server.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server running')

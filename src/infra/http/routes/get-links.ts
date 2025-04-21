@@ -15,6 +15,7 @@ export const getLinksRoute: FastifyPluginAsyncZod = async (server) => {
                 id: z.string(),
                 originalUrl: z.string(),
                 shortHash: z.string(),
+                accessCount: z.number(),
               })
             ),
           }),
