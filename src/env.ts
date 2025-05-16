@@ -11,6 +11,7 @@ const envSchema = z.object({
   CLOUDFLARE_SECRET_ACCESS_KEY: z.string(),
   CLOUDFLARE_BUCKET: z.string(),
   CLOUDFLARE_PUBLIC_URL: z.string().url(),
+  SHORTENER_BASE_URL: z.string().url().default('http://localhost:3333/links/'),
 })
 
 export const env = envSchema.parse(process.env)
