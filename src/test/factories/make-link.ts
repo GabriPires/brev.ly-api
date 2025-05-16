@@ -9,12 +9,14 @@ export async function makeLink(
 ) {
   const originalUrl = faker.internet.url()
   const shortHash = nanoid(8)
+  const accessCount = faker.number.int({ min: 0, max: 100 })
 
   const result = await db
     .insert(schema.link)
     .values({
       originalUrl,
       shortHash,
+      accessCount,
       ...overrides,
     })
     .returning()

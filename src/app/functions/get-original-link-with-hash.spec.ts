@@ -1,5 +1,5 @@
 import { isLeft, isRight, unwrapEither } from '@/shared/either'
-import { makeLink } from '@/test/factories/makeLink'
+import { makeLink } from '@/test/factories/make-link'
 import { describe, expect, it } from 'vitest'
 import { createLink } from './create-link'
 import { InvalidUrl } from './errors/invalid-url'
